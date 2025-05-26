@@ -66,7 +66,7 @@
                     <li><a href="/blog" class="">Blog</a></li>
                     <li><a href="/about" class="">About</a></li>
                      @can('Admin')
-                        <li class="text-orange-800 font-bold"><a href="/about" class="">Admin</a></li>
+                        <li class="text-orange-800 font-bold"><a href="/admin" class="">Admin</a></li>
                     @endcan
                 </ul>
             </nav>

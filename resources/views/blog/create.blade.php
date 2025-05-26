@@ -26,7 +26,7 @@
                     Enter Date of Post <span class="text-gray-400">(dd-mm-yyyy)</span>:
                 </label>
                 <input type="date" id="date" name="date" value="{{ old('date') }}"
-                       class="border rounded text-sm h-8 w-full mt-2">
+                       class="border rounded text-sm h-8 px-2 w-full mt-2">
                 @if($errors->has('date'))
                     <div class="mt-2 text-red-500">{{ $errors->first('date') }}</div>
                 @endif
@@ -37,7 +37,7 @@
                 <label for="title" class="font-semibold text-gray-700">Enter Title:</label>
                 <input type="text" id="title" name="title" value="{{ old('title') }}"
                        placeholder="Enter a title for this post"
-                       class="border rounded text-sm h-8 w-full mt-2">
+                       class="border rounded text-sm h-8 px-2 w-full mt-2">
                 @if($errors->has('title'))
                     <div class="mt-2 text-red-500">{{ $errors->first('title') }}</div>
                 @endif
@@ -129,7 +129,7 @@
                 <label for="tags" class="font-semibold text-gray-700">Enter Tags (if any):</label>
                 <input type="text" id="tags" name="tags"
                        placeholder="Enter tags for the post, e.g., one-two-three"
-                       class="w-full border rounded text-sm h-8 mt-2">
+                       class="w-full border rounded text-sm h-8 px-2 mt-2">
             </div>
 
             <!-- Post Options -->

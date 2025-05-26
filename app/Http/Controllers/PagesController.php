@@ -10,7 +10,7 @@ class PagesController extends Controller
     public function home() {
 
         //get x most recent posts
-        $posts = BlogPosts::orderBy('date', 'desc')->take(3)->get();
+        $posts = BlogPosts::orderBy('date', 'desc')->take(5)->get();
 
         return view('home', compact('posts'));
     }     

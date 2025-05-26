@@ -41,14 +41,14 @@
                 <label class="font-semibold text-gray-700 mb-2">
                     Date of Post <span class="text-gray-400">(dd-mm-yyyy)</span>:
                 </label>
-                <input class="border rounded text-sm h-8 w-full mt-2" type="date" name="date"
+                <input class="border rounded text-sm h-8 px-2 w-full mt-2" type="date" name="date"
                        value="{{ old('date', $page->GetRawOriginal('date')) }}">
             </div>
 
             <!-- Post Title -->
             <div class="mt-3">
                 <label class="font-semibold text-gray-700 mb-2">Enter Title:</label>
-                <input class="border rounded text-sm h-8 w-full mt-2" type="text" name="title"
+                <input class="border rounded text-sm h-8 px-2 w-full mt-2" type="text" name="title"
                        value="{{ old('title', $page->title) }}" placeholder="Enter a title for this post">
             </div>
 
@@ -159,7 +159,7 @@
             <!-- Post Tags -->
             <div class="my-10">
                 <label class="font-semibold text-gray-700 mb-2">Enter Tags:</label>
-                <input type="text" class="w-full border rounded text-sm h-8" name="tags"
+                <input type="text" class="w-full border rounded text-sm  h-8 px-2" name="tags"
                        value="{{ $split_tags }}" placeholder="Enter tags for the post, e.g., one-two-three">
             </div>
 

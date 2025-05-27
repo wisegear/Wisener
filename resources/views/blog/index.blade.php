@@ -6,9 +6,10 @@
         <!-- Header section -->
         <header>
             <div class="mt-10 md:w-8/12">
-                <h2 class="mt-6 font-bold text-4xl md:text-5xl tracking-tight">Straight talk on property and finance — no fluff, no influencer nonsense.</h2>
+                <h2 class="mt-6 font-bold text-4xl md:text-5xl tracking-tight">Straight talk on stuff that I want to tell you about — no fluff, no influencer nonsense.</h2>
                 <p class="mt-6 text-zinc-500 text-base">Some of these articles might be useful. Others might just pass the time while your kettle boils. 
-                    Either way, don’t take financial advice from a bloke with a blog — speak to someone qualified (ideally with insurance… and a desk).
+                    Either way, if you read one of my financial type articles just don’t rely on advice from a bloke with a blog — speak to someone qualified (ideally with insurance… and a desk).  Yes, 
+                    I am qualified for some things, but you can't sue me or get compensation.
                 </p>
             </div>
         </header>

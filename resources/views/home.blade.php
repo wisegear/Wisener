@@ -6,8 +6,9 @@
         <header>
             <div class="mt-20 md:w-8/12">
                 <img src="../assets/images/site/lee-wisener.jpg" alt="Lee Wisener Logo" class="rounded-full h-16 shadow-lg">
-                <h2 class="mt-6 font-bold text-3xl md:text-5xl tracking-tight">Property and finance geek, part-time coder, full-time overthinker.</h2>
-                <p class="mt-6 text-zinc-500 text-base">I’m Lee. I’ve spent 25 years in UK mortgages and banking, which probably says more about my life choices than I’d like to admit. These days I write about it too — mainly because my memory’s shot and it’s the only way I can keep track of what I’m supposed to know. </p>
+                <h2 class="mt-6 font-bold text-3xl md:text-5xl tracking-tight">Property and finance geek, part-time coder, tech enthusiast and full-time overthinker.</h2>
+                <p class="mt-6 text-zinc-500 text-base">I’m Lee. I’ve spent 25 years in UK mortgages and banking, which probably says more about my life choices than I’d like to admit. 
+                    These days I write about it too, well a lot things actually, mainly because my memory’s shot and it’s the only way I can keep track of what I’m supposed to know or I'm trying to remember. </p>
             </div>
         </header>
 
@@ -55,15 +56,18 @@
                 <div class="md:w-5/12 text-sm p-2">
                     <div class="flex gap-4 items-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.99 14.993 6-6m6 3.001c0 1.268-.63 2.39-1.593 3.069a3.746 3.746 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043 3.745 3.745 0 0 1-3.068 1.593c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 0 1-3.296-1.043 3.746 3.746 0 0 1-1.043-3.297 3.746 3.746 0 0 1-1.593-3.068c0-1.268.63-2.39 1.593-3.068a3.746 3.746 0 0 1 1.043-3.297 3.745 3.745 0 0 1 3.296-1.042 3.745 3.745 0 0 1 3.068-1.594c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.297 3.746 3.746 0 0 1 1.593 3.068ZM9.74 9.743h.008v.007H9.74v-.007Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm4.125 4.5h.008v.008h-.008v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
                         </svg>
-                        <h2 class="font-semibold">Bank of England Base Rate</h2>
+                        <h2 class="font-semibold">A confused blog</h2>
                     </div>
-                    <p class="mb-10 text-zinc-500">The current base rate is 4.25%, the next MPC meeting is on June 19, 2025.</p>
+                    <p class="mb-10 text-zinc-500">Like the title says, I’m a bit of a geek when it comes to property and finance. I also code, tinker with tech, and occasionally go down strange 
+                        rabbit holes just to find my way out again with a blog post. This site is where all that lands. It’s not one of those highly focused niche blogs—more like a mildly confused collection 
+                        of thoughts from someone who can’t quite pick a lane. Welcome. </p>
                     <div class="flex gap-4 items-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 0 1 3.15 0v1.5m-3.15 0 .075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 0 1 3.15 0V15M6.9 7.575a1.575 1.575 0 1 0-3.15 0v8.175a6.75 6.75 0 0 0 6.75 6.75h2.018a5.25 5.25 0 0 0 3.712-1.538l1.732-1.732a5.25 5.25 0 0 0 1.538-3.712l.003-2.024a.668.668 0 0 1 .198-.471 1.575 1.575 0 1 0-2.228-2.228 3.818 3.818 0 0 0-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0 1 16.35 15m.002 0h-.002" />
                     </svg>
+
                         <h2 class="font-semibold">No AI on this site</h2>
                     </div>
                     <p class="mb-4 text-zinc-500">It feels odd having to say this, but, no AI was used in creating the content on this site.  With so much of the internet being dominated by AI generated content these days

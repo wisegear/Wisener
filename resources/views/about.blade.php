@@ -11,9 +11,10 @@
             <div class="wise1text my-10">
                 <p>After 25 years in mortgages and banking, I’m probably about done. I’ve officially reached the dinosaur stage — younger folks seem to know better, or at least think they do. Maybe they’re right. But it helps if you’ve lived through a recession, the collapse of the mortgage market, skyrocketing property prices, and interest rates that would make today’s buyers weep. (My first mortgage was nearly 9%. My parents? 14%. Character-building stuff.)</p>
 <p>Somehow, I’m still here. Sarcastic as ever, navigating today’s modern work culture with all the grace of someone who remembers telex machines.</p>
-<p>At 53, I might not be cutting-edge, but I do know a few things — and that’s what this blog is about. You might find it useful, assuming you’re not easily offended and appreciate a slightly sideways look at the world. If not, feel free to cancel me. Saves me writing the next post.</p>
+<p>These days, I write about a bit of everything — property, finance, tech, coding, running, and whatever else manages to both amuse and confuse me. It’s a blog without a clear niche, because frankly, I don’t have one either. Call it a collection of curiosities, written by someone who still hasn’t quite worked out what he wants to be when he grows up.</p>
+<p>At 53, I might not be “disrupting the algorithm,” but I know a few things, and I’m still learning the rest — usually the hard way. If that sounds like your sort of company, you might enjoy poking around. If not, feel free to cancel me early. Saves me writing the next post.</p>
 <p>If it helps, there’s a photo above of me with two of my kids doing something vaguely noble for charity — proof that I’m not entirely irredeemable.  Just for clarity, I am the handsome one on the right.</p>
-<p>If you’d like to get in touch — whether to say thanks or request my cancellation — there’s an email link somewhere on the right. Just a heads-up: I’m not sending £5 postal orders to a foreign prince, no matter how heartfelt the inheritance email sounds. So save us both the trouble.</p>            </div>
+<p>If you fancy getting in touch — whether it’s to say thanks, share your thoughts, or serve legal notice — there’s an email link somewhere on the right. Please note: I’m still not sending money to the foreign prince who needs help unlocking his inheritance. Not again.</p>            </div>
         </div>
         <!-- Side panel -->
         <div class="mt-10 md:w-1/2">

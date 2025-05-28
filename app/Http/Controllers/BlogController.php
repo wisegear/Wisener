@@ -32,10 +32,11 @@ public function index()
 {
    if (isset($_GET['search'])) {
        $searchTerm = $_GET['search'];
-       $posts = BlogPosts::where(function ($query) use ($searchTerm) {
-           $query->where('title', 'LIKE', '%' . $searchTerm . '%')
-                 ->orWhere('body', 'LIKE', '%' . $searchTerm . '%');
-       })->simplePaginate(6);
+        $posts = BlogPosts::where('published', true)
+            ->where(function ($query) use ($searchTerm) {
+                $query->where('title', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('body', 'LIKE', '%' . $searchTerm . '%');
+            })->simplePaginate(6);
 
        // Keep the search term in the pagination links
        $posts->appends(['search' => $searchTerm]);

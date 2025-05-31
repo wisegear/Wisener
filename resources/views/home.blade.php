@@ -72,7 +72,7 @@
                     </div>
                     <p class="mb-4 text-zinc-500">It feels odd having to say this, but, no AI was used in creating the content on this site.  With so much of the internet being dominated by AI generated content these days
                         it's hard to tell. </p>
-                    <p class="text-zinc-500">Go have a look at some of my articles, either my grammar and spelling are bad or AI is not as good as people think it is!</p>
+                    <p class="text-zinc-500">Go have a look at some of my articles, either my grammar and spelling are bad or AI is not as good as people think it is!  ALthough I have started using Grammarly for your benefit.</p>
                 </div>
             </main>
         </div>

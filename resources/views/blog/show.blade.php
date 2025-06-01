@@ -79,7 +79,7 @@
                                 class="w-20 h-20 object-cover rounded-full shadow-sm">
                             <div>
                                 <span class="text-sm text-gray-500 dark:text-gray-300 font-bold">Previous Post</span>
-                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300">
+                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-sm">
                                     {{ $previousPage->title }}
                                 </h3>
                             </div>
@@ -93,7 +93,7 @@
                         class="flex items-center space-x-4 justify-end text-right group hover:bg-gray-100 p-4 rounded-lg transition">
                             <div>
                                 <span class="text-sm text-gray-500 dark:text-gray-300 font-bold">Next Post</span>
-                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300">
+                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-sm">
                                     {{ $nextPage->title }}
                                 </h3>
                             </div>

@@ -187,13 +187,15 @@ public function store(Request $request, ImageService $imageService)
         $page->body = str_replace('{{gallery}}', $galleryHtml, $page->body);
     
         // Prepare "previous" and "next" post queries by date (or by ID)
-        $previousPage = BlogPosts::where('date', '<', $page->date)
-                                 ->orderBy('date', 'desc')
-                                 ->first();
-    
-        $nextPage = BlogPosts::where('date', '>', $page->date)
-                             ->orderBy('date', 'asc')
-                             ->first();
+        $previousPage = BlogPosts::where('published', true)
+                                ->where('date', '<', $page->date)
+                                ->orderBy('date', 'desc')
+                                ->first();
+
+        $nextPage = BlogPosts::where('published', true)
+                            ->where('date', '>', $page->date)
+                            ->orderBy('date', 'asc')
+                            ->first();
     
         return view('blog.show', compact('page', 'recentPages', 'featured', 'previousPage', 'nextPage'));
     }

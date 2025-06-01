@@ -66,26 +66,47 @@
                 </button>
                 </a>
             </div>
-
-            <!-- Author Box -->
-
-            <div class="flex flex-col md:flex-row items-center rounded shadow-lg border border-slate-300 bg-gray-100  p-4 my-10 space-y-2">
-                <div class="w-3/12 lg:w-2/12">
-                    <img src="/assets/images/avatars/{{ $page->users->avatar }}" class="mx-auto rounded-full h-20 border border-slate-300 p-1">
-                </div>
-                <div class="w-full lg:w-10/12">
-                    <p class="font-bold text-center text-gray-700 ">{{ $page->users->name }}</p>
-                    @if (empty($page->users->bio))
-                    <!-- If no user Bio -->
-                    <p class="text-center">User has not provided any information about themselves.</p>
-                    @else
-                        <!-- display user Bio -->
-                        <p class="text-center text-sm ">{{ $page->users->bio }}</p>
-                    @endif   
-                </div>
-            </div>
-
     </div>
+
+        <div class="w-8/12 mt-10 mx-auto">
+            @if ($previousPage || $nextPage)
+                <div class="grid grid-cols-2 gap-6 items-center rounded-lg mb-10 dark:bg-gray-600">
+                    @if ($previousPage)
+                        <a href="{{ url('/blog/' . $previousPage->slug) }}" 
+                        class="flex items-center space-x-4 group hover:bg-gray-100 p-4 rounded-lg transition">
+                            <img src="{{ '/assets/images/uploads/small_' . $previousPage->original_image }}" 
+                                alt="{{ $previousPage->title }}" 
+                                class="w-20 h-20 object-cover rounded-full shadow-sm">
+                            <div>
+                                <span class="text-sm text-gray-500 dark:text-gray-300">Previous Post</span>
+                                <h3 class="font-semibold text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300">
+                                    {{ $previousPage->title }}
+                                </h3>
+                            </div>
+                        </a>
+                    @else
+                        <div class="opacity-50 text-center text-gray-400">No Older Posts</div>
+                    @endif
+            
+                    @if ($nextPage)
+                        <a href="{{ url('/blog/' . $nextPage->slug) }}" 
+                        class="flex items-center space-x-4 justify-end text-right group hover:bg-gray-100 p-4 rounded-lg transition">
+                            <div>
+                                <span class="text-sm text-gray-500 dark:text-gray-300">Next Post</span>
+                                <h3 class="font-semibold text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300">
+                                    {{ $nextPage->title }}
+                                </h3>
+                            </div>
+                            <img src="{{ '/assets/images/uploads/small_' . $nextPage->original_image }}" 
+                                alt="{{ $nextPage->title }}" 
+                                class="w-20 h-20 object-cover rounded-full shadow-sm">
+                        </a>
+                    @else
+                        <div class="opacity-50 text-center text-gray-400 dark:text-gray-300">No Newer Posts</div>
+                    @endif
+                </div>
+            @endif
+        </div>
 
     <script>
     // This handles the dropdown of the table of contents

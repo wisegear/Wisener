@@ -68,7 +68,7 @@
             </div>
     </div>
 
-        <div class="w-8/12 mt-10 mx-auto">
+        <div class="w-full md:w-8/12 mt-10 mx-auto">
             @if ($previousPage || $nextPage)
                 <div class="grid grid-cols-2 gap-6 items-center rounded-lg mb-10 dark:bg-gray-600">
                     @if ($previousPage)
@@ -76,10 +76,10 @@
                         class="flex items-center space-x-4 group hover:bg-gray-100 p-4 rounded-lg transition">
                             <img src="{{ '/assets/images/uploads/small_' . $previousPage->original_image }}" 
                                 alt="{{ $previousPage->title }}" 
-                                class="w-20 h-20 object-cover rounded-full shadow-sm">
+                                class="w-20 h-20 object-cover rounded-full shadow-sm hidden md:block">
                             <div>
                                 <span class="text-sm text-gray-500 dark:text-gray-300 font-bold">Previous Post</span>
-                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-sm">
+                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-xs md:text-sm mt-2">
                                     {{ $previousPage->title }}
                                 </h3>
                             </div>
@@ -93,13 +93,13 @@
                         class="flex items-center space-x-4 justify-end text-right group hover:bg-gray-100 p-4 rounded-lg transition">
                             <div>
                                 <span class="text-sm text-gray-500 dark:text-gray-300 font-bold">Next Post</span>
-                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-sm">
+                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-xs md:text-sm mt-2">
                                     {{ $nextPage->title }}
                                 </h3>
                             </div>
                             <img src="{{ '/assets/images/uploads/small_' . $nextPage->original_image }}" 
                                 alt="{{ $nextPage->title }}" 
-                                class="w-20 h-20 object-cover rounded-full shadow-sm">
+                                class="w-20 h-20 object-cover rounded-full shadow-sm hidden md:block">
                         </a>
                     @else
                         <div class="opacity-50 text-center text-gray-400 dark:text-gray-300">No Newer Posts</div>

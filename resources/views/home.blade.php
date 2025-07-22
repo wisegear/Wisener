@@ -61,7 +61,7 @@
                         <h2 class="font-semibold">A confused blog</h2>
                     </div>
                     <p class="mb-10 text-zinc-500">Like the title says, I’m a bit of a geek when it comes to property and finance. I also code, tinker with tech, and occasionally go down strange 
-                        rabbit holes just to find my way out again with a blog post. This site is where all that lands. It’s not one of those highly focused niche blogs—more like a mildly confused collection 
+                        rabbit holes just to find my way out again with a blog post. This site is where all that lands. It’s not one of those highly focused niche blogs, more like a mildly confused collection 
                         of thoughts from someone who can’t quite pick a lane. Welcome. </p>
                     <div class="flex gap-4 items-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

@@ -5,7 +5,7 @@
    <div class="my-10">
         <!-- Header section -->
         <header>
-            <div class="mt-10 md:w-8/12">
+            <div class="mt-10 md:w-full lg:w-10/12">
                 <h2 class="mt-6 font-bold text-4xl md:text-5xl tracking-tight">Straight talk on stuff that I want to tell you about, no fluff, no influencer nonsense.</h2>
                 <p class="mt-6 text-zinc-500 text-base">Some of these articles might be useful. Others might just pass the time while your kettle boils. 
                     Either way, if you read one of my financial type articles just don’t rely on advice from a bloke with a blog, speak to someone qualified (ideally with insurance… and a desk).  Yes, 
@@ -115,13 +115,13 @@
                 @can('Admin')
                     <!-- Admin -->
                     <div class="hidden md:block my-6">
-                        <h2 class="text-xl font-bold text-gray-700 dark:text-red-300 border-b border-gray-300 mb-4"><i class="fa-solid fa-user-secret text-red-800"></i> Admin Tools</h2>
+                        <h2 class="text-xl font-bold text-red-500 border-b border-gray-300 mb-4"><i class="fa-solid fa-user-secret text-red-500"></i> Admin Tools</h2>
                         <div class="flex justify-center">
-                            <p class="border p-1 text-black rounded text-sm border-slate-300"><a href="/blog/create">Create New Post</a></p>
+                            <p class="border p-1 text-black rounded text-sm bg-emerald-300 tracking-tight px-4 border-slate-300"><a href="/blog/create">Create New Post</a></p>
                         </div>
                         <div class="flex flex-col space-y-2 text-sm mt-4">
                             @foreach ($unpublished as $post)
-                                <a href="../blog/{{$post->id}}/edit" class="text-gray-700 hover:text-sky-700">{{ $post->title }}</a>
+                                <a href="../blog/{{$post->id}}/edit" class="text-slate-800 hover:text-sky-700">{{ $post->title }}</a>
                             @endforeach
                         </div>
                     </div> 

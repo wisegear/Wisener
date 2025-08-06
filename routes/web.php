@@ -68,7 +68,15 @@ Route::get('/generate-sitemap', function () {
             ->add(Url::create('/contact'))
             ->add(Url::create('/about'));
 
-        foreach (BlogPost::where('published', true)->get() as $post) {
+        $posts = BlogPost::where('published', true)->get();
+
+        \Log::info('Sitemap generation: blog post count', ['count' => $posts->count()]);
+
+        if ($posts->isEmpty()) {
+            return response('No blog posts found to add to sitemap.', 200);
+        }
+
+        foreach ($posts as $post) {
             $sitemap->add(
                 Url::create("/blog/{$post->slug}")
                     ->setLastModificationDate($post->updated_at)

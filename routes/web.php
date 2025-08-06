@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Redirect;
 
 // 3rd Party packages 
 
-use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\BlogPost;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminBlogController;
@@ -22,7 +24,7 @@ use App\Http\Controllers\AdminSupportController;
 
 // Base Pages
 
-Route::get('/', [PagesController::class, ('home')]);
+Route::get('/', [PagesController::class, 'home']);
 Route::get('/contact', [PagesController::class, 'contact']);
 Route::get('/about', [PagesController::class, 'about']);
 
@@ -46,22 +48,35 @@ Route::middleware('auth')->group(function () {
         Route::resource('/support', AdminSupportController::class)->middleware('can:Admin');
     });
 
+    // Logout route to clear session.
+
+    Route::get('/logout', function(){
+        Session::flush();
+        Auth::logout();
+        return Redirect::to("/");
+    });
+
 });
 
 // Sitemap by Spatie - Need to run generate-sitemap
 
 Route::get('/generate-sitemap', function () {
-    SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
-    
+    $sitemap = Sitemap::create()
+        ->add(Url::create('/'))
+        ->add(Url::create('/blog'))
+        ->add(Url::create('/contact'))
+        ->add(Url::create('/about'));
+
+    foreach (\App\Models\BlogPost::where('published', true)->get() as $post) {
+        $sitemap->add(
+            Url::create("/blog/{$post->slug}")
+                ->setLastModificationDate($post->updated_at)
+        );
+    }
+
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+
     return 'Sitemap generated!';
-});
-
-// Logout route to clear session.
-
-Route::get('/logout', function(){
-    Session::flush();
-    Auth::logout();
-    return Redirect::to("/");
 });
 
 require __DIR__.'/auth.php';

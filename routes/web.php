@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
+
 // 3rd Party packages 
 
 use Spatie\Sitemap\Sitemap;
@@ -70,7 +71,7 @@ Route::get('/generate-sitemap', function () {
 
         $posts = BlogPosts::where('published', true)->get();
 
-        \Log::info('Sitemap generation: blog post count', ['count' => $posts->count()]);
+       Illuminate\Support\Facades\Log::info('Sitemap generation: blog post count', ['count' => $posts->count()]);
 
         if ($posts->isEmpty()) {
             return response('No blog posts found to add to sitemap.', 200);
@@ -87,7 +88,7 @@ Route::get('/generate-sitemap', function () {
 
         return 'Sitemap generated!';
     } catch (\Exception $e) {
-        \Log::error('Sitemap generation failed', ['error' => $e]);
+       Illuminate\Support\Facades\Log::error('Sitemap generation failed', ['error' => $e]);
         return response('Sitemap generation failed. Check logs.', 500);
     }
 });

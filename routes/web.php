@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Redirect;
 
 // 3rd Party packages 
 
-use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\BlogPost;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminBlogController;
@@ -59,10 +61,27 @@ Route::get('/logout', function(){
 // Sitemap by Spatie - Need to run generate-sitemap
 
 Route::get('/generate-sitemap', function () {
-    SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
-    
-    return 'Sitemap generated!';
-});
+    try {
+        $sitemap = Sitemap::create()
+            ->add(Url::create('/'))
+            ->add(Url::create('/blog'))
+            ->add(Url::create('/contact'))
+            ->add(Url::create('/about'));
 
+        foreach (BlogPost::where('published', true)->get() as $post) {
+            $sitemap->add(
+                Url::create("/blog/{$post->slug}")
+                    ->setLastModificationDate($post->updated_at)
+            );
+        }
+
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+
+        return 'Sitemap generated!';
+    } catch (\Exception $e) {
+        \Log::error('Sitemap generation failed', ['error' => $e]);
+        return response('Sitemap generation failed. Check logs.', 500);
+    }
+});
 require __DIR__.'/auth.php';
 

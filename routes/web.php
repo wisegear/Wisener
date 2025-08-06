@@ -61,22 +61,26 @@ Route::middleware('auth')->group(function () {
 // Sitemap by Spatie - Need to run generate-sitemap
 
 Route::get('/generate-sitemap', function () {
-    $sitemap = Sitemap::create()
-        ->add(Url::create('/'))
-        ->add(Url::create('/blog'))
-        ->add(Url::create('/contact'))
-        ->add(Url::create('/about'));
+    try {
+        $sitemap = Sitemap::create()
+            ->add(Url::create('/'))
+            ->add(Url::create('/blog'))
+            ->add(Url::create('/contact'))
+            ->add(Url::create('/about'));
 
-    foreach (\App\Models\BlogPost::where('published', true)->get() as $post) {
-        $sitemap->add(
-            Url::create("/blog/{$post->slug}")
-                ->setLastModificationDate($post->updated_at)
-        );
+        foreach (\App\Models\BlogPost::where('published', true)->get() as $post) {
+            $sitemap->add(
+                Url::create("/blog/{$post->slug}")
+                    ->setLastModificationDate($post->updated_at)
+            );
+        }
+
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+
+        return 'Sitemap generated!';
+    } catch (\Exception $e) {
+        return response('Sitemap generation failed: ' . $e->getMessage(), 500);
     }
-
-    $sitemap->writeToFile(public_path('sitemap.xml'));
-
-    return 'Sitemap generated!';
 });
 
 require __DIR__.'/auth.php';

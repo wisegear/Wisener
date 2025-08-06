@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use App\Models\BlogPost;
+use App\Models\BlogPosts;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminBlogController;
@@ -68,7 +68,7 @@ Route::get('/generate-sitemap', function () {
             ->add(Url::create('/contact'))
             ->add(Url::create('/about'));
 
-        $posts = BlogPost::where('published', true)->get();
+        $posts = BlogPosts::where('published', true)->get();
 
         \Log::info('Sitemap generation: blog post count', ['count' => $posts->count()]);
 

@@ -165,12 +165,15 @@ public function store(Request $request, ImageService $imageService)
         $page = BlogPosts::with('BlogCategories', 'users', 'blogTags')
                          ->where('slug', $slug)
                          ->firstOrFail();
+        if ($page->subscriber_only) {
+            Gate::authorize('Admin');
+        }
     
         // Get the most recent pages (for sidebar or similar use)
-        $recentPages = BlogPosts::orderBy('date', 'desc')->take(3)->get();
+        $recentPages = BlogPosts::where('published', true)->orderBy('date', 'desc')->take(3)->get();
     
         // (Optional) Get featured posts if needed
-        $featured = BlogPosts::where('featured', true)
+        $featured = BlogPosts::where('featured', true)->where('published', true)
                              ->orderBy('id', 'desc')
                              ->take(3)
                              ->get();

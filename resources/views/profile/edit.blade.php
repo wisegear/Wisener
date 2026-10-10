@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends(auth()->user()?->can('Admin') ? 'layouts.admin' : 'layouts.app')
 
+@section('title', 'Edit user')
 @section('content')
+<div class="{{ auth()->user()?->can('Admin') ? 'admin-editor' : '' }}">
 
 <div class="">
 
@@ -144,4 +146,5 @@
     
     </div>
 
+</div>
 @endsection

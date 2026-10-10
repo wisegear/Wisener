@@ -1,5 +1,7 @@
-@extends('layouts.app')
+@extends(auth()->user()?->can('Admin') ? 'layouts.admin' : 'layouts.app')
+@section('title', 'Support conversation')
 @section('content')
+<div class="{{ auth()->user()?->can('Admin') ? 'admin-editor' : '' }}">
 <div class="border dark:border-gray-500 rounded-md p-2 w-4/5 mx-auto">
 	<h2 class="font-bold text-2xl text-center mb-1 dark:text-white">{{ $ticket->title }}</h2>
 	<div class="text-center text-gray-700 space-x-4 mb-4 dark:text-white">
@@ -48,4 +50,5 @@
 		<button type="submit" class="border dark:border-gray-500 rounded p-2 mt-2 text-sm bg-lime-500 hover:bg-lime-400" style="">Add Reply</button> 
 	</form>			
 </div>
-å@endsection
+</div>
+@endsection

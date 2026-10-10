@@ -1,46 +1,15 @@
 @extends('layouts.admin')
-
+@section('title', 'Overview')
 @section('content')
-
-<div class="w-1/2 mx-auto text-center mb-10">
-	<h1 class="text-2xl font-bold">Dashboard</h1>
-	<p class="text-gray-500">Admin Dashboard. From here you can manage the Users, Blog, Articles, Support tickets and other elements as required.</p>
+<div class="admin-page-heading"><p class="admin-eyebrow">At a glance</p><h1>Your site, in view.</h1><p>Welcome back, {{ auth()->user()->name }}. Here’s what’s happening across your blog.</p></div>
+<div class="admin-stats">
+    <a href="/admin/blog" class="admin-stat"><span>Blog posts</span><strong>{{ $blogposts->count() }}</strong><p>{{ $blogunpublished->count() }} unpublished <span aria-hidden="true">↗</span></p></a>
+    <a href="/admin/users" class="admin-stat"><span>Registered users</span><strong>{{ $users->count() }}</strong><p>{{ $users_admin }} administrators <span aria-hidden="true">↗</span></p></a>
+    <a href="/admin/support" class="admin-stat"><span>Support tickets</span><strong>{{ $tickets->count() }}</strong><p>{{ $awaiting_reply }} awaiting reply <span aria-hidden="true">↗</span></p></a>
 </div>
-
-<div class="grid grid-cols-3 gap-20">
-
-	<div class="border bg-gray-100 rounded p-4 shadow-lg">
-		<div class="border-b border-b-gray-400">
-			<h2 class="text-xl font-bold text-center pb-2">Users <span class="text-blue-700 text-center">{{ $users->count() }}</span></h2>		
-		</div>
-		<div class="mt-5 text-center text-sm text-gray-500">
-			<p class="">Banned: <span class="">{{ $users_banned }}</span></p>
-			<p class="">Pending: <span class="">{{ $users_pending }}</span></p>
-			<p class="">Members: <span class="">{{ $users_active }}</span></p>
-            <p class="">Admin: <span class="">{{ $users_admin }}</span></p>
-		</div>
-	</div>
-
-	<div class="border bg-gray-100 rounded p-4 shadow-lg">
-		<div class="border-b border-b-gray-400">
-			<h2 class="text-xl font-bold text-center pb-2">Blog Posts <span class="text-blue-700 text-center">{{ $blogposts->count() }}</span></h2>
-		</div>
-		<div class="mt-5 text-center text-sm text-gray-500">
-			<p class="">Not published: <span class=""></span>{{ $blogunpublished->count() }}</p>
-		</div>
-	</div>
-
-	<div class="bborder bg-gray-100 rounded p-4 shadow-lg">
-		<div class="border-b border-b-gray-400">
-			<h2 class="text-xl font-bold text-center pb-2">Support <span class="text-blue-700 text-center">{{ $tickets->count() }}</span></h2>
-		</div>
-		<div class="mt-5 text-center text-sm text-gray-500">
-			<p class="">In Progress:  <span class="">{{ $in_progress_tickets }}</span></p>
-			<p class="">Awaiting Reply:  <span class="">{{ $awaiting_reply }}</span></p>
-			<p class="">Open:  <span class="">{{ $open_tickets }}</span></p>
-		</div>
-	</div>
-
+<div class="admin-two-column">
+    <section class="admin-panel"><div class="admin-panel-heading"><h2>Community</h2><a href="/admin/users">Manage users →</a></div><dl class="admin-summary"><div><dt>Members</dt><dd>{{ $users_active }}</dd></div><div><dt>Pending / contributors</dt><dd>{{ $users_pending }}</dd></div><div><dt>Banned</dt><dd>{{ $users_banned }}</dd></div><div><dt>Administrators</dt><dd>{{ $users_admin }}</dd></div></dl></section>
+    <section class="admin-panel"><div class="admin-panel-heading"><h2>Support queue</h2><a href="/admin/support">View tickets →</a></div><dl class="admin-summary"><div><dt>Open</dt><dd>{{ $open_tickets }}</dd></div><div><dt>In progress</dt><dd>{{ $in_progress_tickets }}</dd></div><div><dt>Awaiting reply</dt><dd>{{ $awaiting_reply }}</dd></div></dl></section>
 </div>
- 
+<section class="admin-writing-prompt"><div><p class="admin-eyebrow">Make something worth reading</p><h2>What’s on your mind?</h2><p>Turn your next idea into a post.</p></div><a href="/blog/create" class="admin-button">Write a post →</a></section>
 @endsection

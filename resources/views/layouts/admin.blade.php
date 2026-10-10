@@ -1,55 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Blog') }}</title>
-
-        <!-- TinyMCE -->
-        <script src="https://cdn.tiny.cloud/1/a1rn9rzvnlulpzdgoe14w7kqi1qpfsx7cx9am2kbgg226dqz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-        
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- FontAwesome -->
-        <script src="https://kit.fontawesome.com/0ff5084395.js" crossorigin="anonymous"></script>
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-
-    <body class="font-sans antialiased">
-
-        <!-- Main outer container for the entire site -->
-        <div class="max-w-screen-xl px-5 mx-auto">
-
-            <!-- Main Navigation for the site -->
-            <div class="flex items-center py-4 border-b justify-center">
-                <div class="space-x-4 hidden md:block md:text-center md:w-8/12">
-                    <a href="/" class="hover:text-red-500">Site Home</a>
-                    <a href="/admin" class="hover:text-red-500">Admin Home</a>
-                    <a href="/admin/users" class="hover:text-red-500">Users</a>
-                    <a href="/admin/blog" class="hover:text-red-500">Blog</a>
-                    <a href="/admin/support" class="hover:text-red-500">Support</a>
-                </div>
-            </div>
-
-            <!-- This is where the content for each page is rendered -->
-            <div class="my-10">
-                @yield('content')
-            </div>
-
-            <!-- Footer for entire site -->
-            <!-- Footer -->
-            <div class="border-t border-gray-300 mt-auto mb-10">
-                <p class="text-center py-2">PropertyBlog.Scot, by Lee Wisener</p>
-            </div>
-
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', 'Overview') · Wisener Admin</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="admin-shell">
+    <aside class="admin-sidebar">
+        <a href="/admin" class="admin-brand">wisener<span>.</span><span class="admin-brand-suffix">net</span></a>
+        <p class="admin-eyebrow">Administration</p>
+        <nav aria-label="Admin navigation" class="admin-nav">
+            @foreach ([['/admin', 'Overview', '01'], ['/admin/blog', 'Blog & categories', '02'], ['/admin/users', 'Users', '03'], ['/admin/support', 'Support', '04']] as [$href, $label, $number])
+                @php($active = $href === '/admin' ? request()->is('admin') : (request()->is(ltrim($href, '/').'*') || ($href === '/admin/blog' && request()->is('blog/*')) || ($href === '/admin/users' && request()->is('profile/*')) || ($href === '/admin/support' && request()->is('support/*'))))
+                <a href="{{ $href }}" class="{{ $active ? 'is-active' : '' }}" @if($active) aria-current="page" @endif><span>{{ $number }}</span>{{ $label }}</a>
+            @endforeach
+        </nav>
+        <div class="admin-sidebar-bottom">
+            <a href="/">View website <span aria-hidden="true">↗</span></a>
+            <p>{{ auth()->user()->name }}<span>Administrator</span></p>
+            <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit">Sign out</button></form>
         </div>
-
-    </body>
-
+    </aside>
+    <div class="admin-workspace">
+        <header class="admin-topbar"><span>Workspace <span class="admin-divider">/</span> @yield('title', 'Overview')</span><div class="admin-topbar-links"><a href="/">View site ↗</a><a href="/blog/create" class="admin-button">+ New post</a></div></header>
+        <main class="admin-content">
+            @foreach (['created', 'updated', 'deleted', 'status'] as $message)
+                @if(session($message))<div class="admin-notice" role="status">{{ session($message) }}</div>@endif
+            @endforeach
+            @yield('content')
+        </main>
+        <footer class="admin-footer">Wisener.net <span>Your thoughts. Your space.</span></footer>
+    </div>
+</body>
 </html>

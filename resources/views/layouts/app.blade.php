@@ -54,13 +54,13 @@
     <!-- Open Outer Container -->
     <div class="max-w-screen-xl mx-auto bg-white shadow-sm px-4 sm:px-10 lg:px-20 min-h-screen flex flex-col">
 
-        <div class="flex justify-between items-center">
-            <!-- Logo -->
-            <div class="mt-6">
-                <a href="/"><img src="../assets/images/site/logo.png" alt="wisener-logo" class="h-10"></a>
+        <div class="flex flex-wrap justify-between items-center gap-x-6 gap-y-4 pt-6">
+            <!-- Text wordmark -->
+            <div>
+                <a href="/" aria-label="Wisener.net home" class="inline-flex items-baseline text-2xl font-semibold tracking-tight text-zinc-800 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-500">wisener<span class="text-teal-500">.</span><span class="font-normal text-zinc-500">net</span></a>
             </div>
             <!-- Nav Section -->
-            <nav class="border border-zinc-100 rounded-full py-2 shadow w-max mx-auto mt-6">
+            <nav class="border border-zinc-100 rounded-full py-2 shadow w-max mx-auto">
                 <ul class="flex justify-center text-sm space-x-4 px-4">
                     <li><a href="/" class="">Home</a></li>
                     <li><a href="/blog" class="">Blog</a></li>

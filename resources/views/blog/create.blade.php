@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends(auth()->user()?->can('Admin') ? 'layouts.admin' : 'layouts.app')
 
+@section('title', 'New post')
 @section('content')
+<div class="{{ auth()->user()?->can('Admin') ? 'admin-editor' : '' }}">
     <h2 class="text-2xl text-center font-bold mb-10">Create a New Post</h2>
 
     <div class="w-3/4 mx-auto space-y-8">
@@ -215,4 +217,5 @@
             alert('Image URL copied to clipboard!');
         }
     </script>
+</div>
 @endsection

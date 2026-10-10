@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
-
-Use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class SupportController extends Controller
 {

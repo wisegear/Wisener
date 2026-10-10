@@ -10,16 +10,16 @@
 		<div class="mb-10">
 			<label class="dark:text-white font-bold">Enter a title for this ticket:</label>
 			<div class="text-red-500">{{ $errors->has('title') ? 'A title is required' : '' }}</div>
-			<input class="h-8 border w-full mt-2 rounded" type="text" id="title" name="title"  value="{{ old('title') }}">
+			<input class="h-8 border w-full mt-2 rounded p-4" type="text" id="title" name="title"  value="{{ old('title') }}">
 		</div>  
 
 		<div class="">
 			<label class="dark:text-white font-bold">Enter notes:</label>
             <div class="mt-2 text-red-500">{{ $errors->has('text') ? 'At least some text is required' : '' }}</div>
-			<textarea class="w-full border h-40 mt-2 rounded" name="text" id="text" placeholder="Be as detailed as possible">{{ old('text') }}</textarea>
+			<textarea class="w-full border h-40 mt-2 rounded p-4" name="text" id="text" placeholder="Be as detailed as possible">{{ old('text') }}</textarea>
 		</div>
 		<div class="mt-5">
-			<button type="submit" class="border rounded p-2 bg-lime-500 hover:bg-lime-400 dark:border-gray-500">Create New Ticket</button>
+			<button type="submit" class="standard-button">Create New Ticket</button>
 		</div>
 	</form>
 	</div>

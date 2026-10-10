@@ -53,9 +53,9 @@
 
                 <a href="https://twitter.com/share?text=why-i-deleted-thousands-of-x-followers-and-was-right-to-do-it &url=https://wisener.net/blog/{{ $page->slug }}">
                     <button id="social-button" aria-label="linkedin-button" class="border border-gray-300 p-1 text-indigo-500 text-xs py-1 px-2 mr-2 hover:border-gray-400 cursor-pointer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
-                        <path d="M13.3174 10.7749L19.1457 4H17.7646L12.7039 9.88256L8.66193 4H4L10.1122 12.8955L4 20H5.38119L10.7254 13.7878L14.994 20H19.656L13.3171 10.7749H13.3174ZM11.4257 12.9738L10.8064 12.0881L5.87886 5.03974H8.00029L11.9769 10.728L12.5962 11.6137L17.7652 19.0075H15.
-                        6438L11.4257 12.9742V12.9738Z"></path></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
+                    <path d="M13.3174 10.7749L19.1457 4H17.7646L12.7039 9.88256L8.66193 4H4L10.1122 12.8955L4 20H5.38119L10.7254 13.7878L14.994 20H19.656L13.3171 10.7749H13.3174ZM11.4257 12.9738L10.8064 12.0881L5.87886 5.03974H8.00029L11.9769 10.728L12.5962 11.6137L17.7652 19.0075H15.6438L11.4257 12.9742V12.9738Z"></path>
+                </svg>
                     </button>
                 </a>
 
@@ -68,45 +68,55 @@
             </div>
     </div>
 
-        <div class="w-full md:w-8/12 mt-10 mx-auto">
-            @if ($previousPage || $nextPage)
-                <div class="grid grid-cols-2 gap-6 items-center rounded-lg mb-10 dark:bg-gray-600">
-                    @if ($previousPage)
-                        <a href="{{ url('/blog/' . $previousPage->slug) }}" 
-                        class="flex items-center space-x-4 group hover:bg-gray-100 p-4 rounded-lg transition">
-                            <img src="{{ '/assets/images/uploads/small_' . $previousPage->original_image }}" 
-                                alt="{{ $previousPage->title }}" 
-                                class="w-20 h-20 object-cover rounded-full shadow-sm hidden md:block border border-slate-300">
-                            <div>
-                                <span class="text-sm text-gray-500 dark:text-gray-300 font-bold">Previous Post</span>
-                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-xs md:text-sm mt-2">
-                                    {{ $previousPage->title }}
-                                </h3>
-                            </div>
-                        </a>
-                    @else
-                        <div class="opacity-50 text-center text-gray-400">No Older Posts</div>
-                    @endif
-            
-                    @if ($nextPage)
-                        <a href="{{ url('/blog/' . $nextPage->slug) }}" 
-                        class="flex items-center space-x-4 justify-end text-right group hover:bg-gray-100 p-4 rounded-lg transition">
-                            <div>
-                                <span class="text-sm text-gray-500 dark:text-gray-300 font-bold">Next Post</span>
-                                <h3 class="text-gray-800 group-hover:text-teal-500 transition dark:text-gray-300 text-xs md:text-sm mt-2">
-                                    {{ $nextPage->title }}
-                                </h3>
-                            </div>
-                            <img src="{{ '/assets/images/uploads/small_' . $nextPage->original_image }}" 
-                                alt="{{ $nextPage->title }}" 
-                                class="w-20 h-20 object-cover rounded-full shadow-sm hidden md:block border border-slate-300">
-                        </a>
-                    @else
-                        <div class="opacity-50 text-center text-gray-400 dark:text-gray-300">No Newer Posts</div>
-                    @endif
-                </div>
-            @endif
-        </div>
+    <div class="w-full md:w-8/12 mt-10 mx-auto">
+        @if ($previousPage || $nextPage)
+            <div class="grid grid-cols-2 gap-6 items-center rounded-lg mb-10">
+                @if ($previousPage)
+                    <a href="{{ url('/blog/' . $previousPage->slug) }}" 
+                    class="flex items-center space-x-4 group hover:bg-gray-100 p-4 rounded-lg transition">
+                        <img src="{{ '/assets/images/uploads/small_' . $previousPage->original_image }}" 
+                            alt="{{ $previousPage->title }}" 
+                            class="w-20 h-20 object-cover rounded-full shadow-sm hidden md:block border border-slate-300">
+                        <div>
+                            <span class="text-sm text-gray-500 font-bold">Previous Post</span>
+                            <h3 class="text-gray-800 group-hover:text-teal-500 transition text-xs md:text-sm mt-2">
+                                {{ $previousPage->title }}
+                            </h3>
+                        </div>
+                    </a>
+                @else
+                    <div class="opacity-50 text-center text-gray-400">No Older Posts</div>
+                @endif
+        
+                @if ($nextPage)
+                    <a href="{{ url('/blog/' . $nextPage->slug) }}" 
+                    class="flex items-center space-x-4 justify-end text-right group hover:bg-gray-100 p-4 rounded-lg transition">
+                        <div>
+                            <span class="text-sm text-gray-500 font-bold">Next Post</span>
+                            <h3 class="text-gray-800 group-hover:text-teal-500 transition text-xs md:text-sm mt-2">
+                                {{ $nextPage->title }}
+                            </h3>
+                        </div>
+                        <img src="{{ '/assets/images/uploads/small_' . $nextPage->original_image }}" 
+                            alt="{{ $nextPage->title }}" 
+                            class="w-20 h-20 object-cover rounded-full shadow-sm hidden md:block border border-slate-300">
+                    </a>
+                @else
+                    <div class="opacity-50 text-center text-gray-400 ">No Newer Posts</div>
+                @endif
+            </div>
+        @endif
+    </div>
+
+    <!-- Comments Section -->
+    <div class="w-full md:w-8/12 mx-auto mb-10">
+        @include('partials.comments',
+        [
+            'comments' => $page->comments,
+            'model' => $page
+        ])
+    </div>
+    
 
     <script>
     // This handles the dropdown of the table of contents

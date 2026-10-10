@@ -4,6 +4,12 @@
 
 a { @apply hover:text-teal-500; }
 
+.standard-button {
+
+  @apply rounded p-2 mt-4 bg-slate-500 text-white text-sm hover:bg-slate-400 cursor-pointer;
+
+}
+
 
 /* Wise1text Styles */
 

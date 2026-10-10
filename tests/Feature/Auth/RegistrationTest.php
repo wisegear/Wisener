@@ -3,6 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
@@ -18,14 +19,18 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
+        Http::preventStrayRequests();
+        Http::fake(['https://hcaptcha.com/siteverify' => Http::response(['success' => true])]);
+
         $response = $this->post('/register', [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'h-captcha-response' => 'test-token',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        $response->assertRedirect(url('/'));
     }
 }

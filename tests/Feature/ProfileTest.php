@@ -10,90 +10,55 @@ class ProfileTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_profile_page_is_displayed(): void
+    public function test_profile_editor_is_displayed_for_its_owner(): void
     {
         $user = User::factory()->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->get('/profile');
-
-        $response->assertOk();
+        $this->actingAs($user)->get('/profile/'.$user->name_slug.'/edit')->assertOk()->assertSee($user->email);
     }
 
     public function test_profile_information_can_be_updated(): void
     {
         $user = User::factory()->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->patch('/profile', [
-                'name' => 'Test User',
-                'email' => 'test@example.com',
-            ]);
-
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
-
+        $editUrl = '/profile/'.$user->name_slug.'/edit';
+        $this->actingAs($user)->from($editUrl)->put('/profile/'.$user->name_slug, [
+            'email' => 'test@example.com', 'website' => 'https://example.com', 'bio' => 'Updated biography',
+        ])->assertSessionHasNoErrors()->assertRedirect($editUrl);
         $user->refresh();
-
-        $this->assertSame('Test User', $user->name);
         $this->assertSame('test@example.com', $user->email);
+        $this->assertSame('Updated biography', $user->bio);
         $this->assertNull($user->email_verified_at);
     }
 
     public function test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged(): void
     {
         $user = User::factory()->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->patch('/profile', [
-                'name' => 'Test User',
-                'email' => $user->email,
-            ]);
-
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
-
-        $this->assertNotNull($user->refresh()->email_verified_at);
+        $editUrl = '/profile/'.$user->name_slug.'/edit';
+        $this->actingAs($user)->from($editUrl)->put('/profile/'.$user->name_slug, [
+            'email' => $user->email,
+        ])->assertSessionHasNoErrors()->assertRedirect($editUrl);
+        $this->assertNotNull($user->fresh()->email_verified_at);
     }
 
-    public function test_user_can_delete_their_account(): void
+    public function test_users_cannot_update_someone_elses_profile(): void
     {
         $user = User::factory()->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->delete('/profile', [
-                'password' => 'password',
-            ]);
-
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/');
-
-        $this->assertGuest();
-        $this->assertNull($user->fresh());
+        $other = User::factory()->create();
+        $this->actingAs($user)->put('/profile/'.$other->name_slug, [
+            'email' => 'changed@example.com',
+        ])->assertForbidden();
+        $this->assertSame($other->email, $other->fresh()->email);
     }
 
-    public function test_correct_password_must_be_provided_to_delete_account(): void
+    public function test_invalid_or_duplicate_email_does_not_change_profile(): void
     {
         $user = User::factory()->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->from('/profile')
-            ->delete('/profile', [
-                'password' => 'wrong-password',
-            ]);
-
-        $response
-            ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect('/profile');
-
-        $this->assertNotNull($user->fresh());
+        $other = User::factory()->create();
+        $editUrl = '/profile/'.$user->name_slug.'/edit';
+        foreach (['invalid-email', $other->email] as $email) {
+            $this->actingAs($user)->from($editUrl)->put('/profile/'.$user->name_slug, [
+                'email' => $email,
+            ])->assertSessionHasErrors('email')->assertRedirect($editUrl);
+            $this->assertSame($user->email, $user->fresh()->email);
+        }
     }
 }

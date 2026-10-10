@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use App\Models\UserRoles;
 use Illuminate\Http\Request;
@@ -66,12 +67,10 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $name_slug)
+    public function update(ProfileUpdateRequest $request, $name_slug)
     {
 
-        Gate::authorize('Member');
-
-        $user = User::where('name_slug', $name_slug)->first();
+        $user = User::where('name_slug', $name_slug)->firstOrFail();
 
         // Check if there is a new avatar
 
@@ -111,7 +110,10 @@ class ProfileController extends Controller
 
         }
 
-        $user->email = $request->email;
+        if ($user->email !== $request->validated('email')) {
+            $user->email_verified_at = null;
+        }
+        $user->email = $request->validated('email');
         $user->website = $request->website;
         $user->location = $request->location;
         $user->bio = $request->bio;
